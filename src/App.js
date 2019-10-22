@@ -79,14 +79,15 @@ function App() {
         </Grid>
       </AppBar>
 
-      <List style={{padding: 30}}>
+      <List style={{paddingTop: 30, paddingLeft: 20, paddingRight:50}}>
         <ListItem>
           <ListItemAvatar>
             <Avatar>
               <DirectionsRunIcon />
             </Avatar>
           </ListItemAvatar>
-          <ListItemText primary="Run/Bike" secondary="Jan 9, 2014" />
+          <ListItemText secondary="Jan 9, 2014" />
+          <Divider/>
         </ListItem>
         <Divider/>
         <List>
