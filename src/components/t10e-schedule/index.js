@@ -32,9 +32,7 @@ class T10eSchedule extends React.Component<Props> {
               <CardContent>
                 <Grid container spacing={3}>
                   <Grid item xs={11}>
-                    <Typography>
                       Run
-                    </Typography>
                   </Grid>
                   <Grid item xs={1}>
                     <CheckCircleOutlineIcon style={{color: 'gray'}}/>
@@ -48,9 +46,7 @@ class T10eSchedule extends React.Component<Props> {
               <CardContent>
                 <Grid container spacing={3}>
                   <Grid item xs={11}>
-                    <Typography>
                       Bike
-                    </Typography>
                   </Grid>
                   <Grid item xs={1}>
                     <CheckCircleIcon style={{color: 'green'}}/>
