@@ -1,4 +1,5 @@
-var express = require('express');
+const express = require('express');
+// eslint-disable-next-line
 var router = express.Router();
 
 /* GET users listing. */
