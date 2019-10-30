@@ -11,9 +11,23 @@ import Avatar from '@material-ui/core/Avatar';
 import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import Typography from '@material-ui/core/Typography';
+import axios from 'axios';
 
 class T10eSchedule extends React.Component<Props> {
+  state = {
+    workouts: []
+  }
+
+  componentDidMount() {
+    const backendAddress = process.env.REACT_APP_TRISCHEDULE_BACKEND_ADDRESS
+    axios.get(`${backendAddress}/athlete/abc`)
+      .then(res => {
+        console.log(res)
+        // const posts = res.data.data.children.map(obj => obj.data);
+        // this.setState({ posts });
+    });
+  }
+
   render() {
     return (
       <List style={{paddingTop: 30, paddingLeft: 20, paddingRight:50}}>
