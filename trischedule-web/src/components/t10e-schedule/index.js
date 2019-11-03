@@ -9,18 +9,12 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
-import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import axios from 'axios';
-import { withStyles } from "@material-ui/core/styles";
+import T10eWorkout from './t10e-workout';
 
-const styles = {
-  cardcontent: {
-    "&:last-child": {
-      paddingBottom: 14
-    }
-  }
-};
+import axios from 'axios';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = {};
 
 class T10eSchedule extends React.Component<Props> {
   state = {
@@ -62,29 +56,11 @@ class T10eSchedule extends React.Component<Props> {
                 <ListItemText secondary={date} />
               </ListItem>
               <Divider/>
-              <List>
+              <List>        
                 {
                   workouts.map((workout) =>
                     <ListItem>
-                      <Card style={{width: '100%'}}>
-                        <CardContent
-                          className={classes.cardcontent}
-                        >
-                          <Grid container spacing={3}>
-                            <Grid item xs={11}>
-                                {workout.workout_type}
-                            </Grid>
-                            <Grid item xs={1}>
-                              {workout.completed ? (
-                                  <CheckCircleIcon style={{color: 'green'}}/>
-                                ) : (
-                                  <CheckCircleOutlineIcon style={{color: 'gray'}}/>
-                                )
-                              }
-                            </Grid>
-                          </Grid>
-                        </CardContent>
-                      </Card>
+                      <T10eWorkout workout={workout} />
                     </ListItem>
                   )
                 }
