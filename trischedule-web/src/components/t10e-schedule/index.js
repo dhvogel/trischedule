@@ -120,33 +120,11 @@ class T10eSchedule extends React.Component<Props> {
                 id="workout-comments"
                 label="Workout comments"
                 multiline
-                rows="2"
+                rows="1"
                 defaultValue={this.state.activeWorkout.workout_comments}
                 margin="normal"
                 style={{width: '90%'}}
               />
-            </Grid>
-            <Grid container spacing={2} style={{paddingTop: 30}}>
-              <Grid item xs={3}>
-                Completed:
-              </Grid>
-              <Grid item xs={9}>
-                <Checkbox
-                  checked={this.state.activeWorkout.completed}
-                  className={classes.checkboxRoot}
-                  onChange={handleCompletedChange(this.state.activeWorkout)} />
-              </Grid>
-            </Grid>
-            <Grid container spacing={2} style={{paddingTop: 30}}>
-              <Grid item xs={3}>
-                Completed:
-              </Grid>
-              <Grid item xs={9}>
-                <Checkbox
-                  checked={this.state.activeWorkout.completed}
-                  className={classes.checkboxRoot}
-                  onChange={handleCompletedChange(this.state.activeWorkout)} />
-              </Grid>
             </Grid>
             <Grid container spacing={2} style={{paddingTop: 30}}>
               <Grid item xs={3}>
