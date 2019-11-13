@@ -2,10 +2,13 @@ import React from 'react';
 import List from '@material-ui/core/List';
 import T10eWorkout from './t10e-workout';
 import T10eDayHeader from './t10e-day-header';
+import T10eWorkoutModal from './t10e-workout-modal';
 import Modal from '@material-ui/core/Modal';
 import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import SaveIcon from '@material-ui/icons/Save';
 
 import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
@@ -97,48 +100,7 @@ class T10eSchedule extends React.Component<Props> {
             })
           }
         </List>
-        <Modal
-          open={this.state.openModal}
-          onClose={closeModalWithWorkout}
-        >
-          <div className={classes.paper}>
-            <Grid container spacing={0}
-              direction='column'
-              justify='center'
-              alignItems='center'>
-              <b>{this.state.activeWorkout.workout_type}</b>
-            </Grid>
-            <Grid container spacing={0}
-              direction='column'
-              justify='center'
-              alignItems='center'
-              style={{paddingTop: 5}}>
-              <i>{this.state.activeWorkout.scheduled_day}</i>
-            </Grid>
-            <Grid container>
-              <TextField
-                id="workout-comments"
-                label="Workout comments"
-                multiline
-                rows="1"
-                defaultValue={this.state.activeWorkout.workout_comments}
-                margin="normal"
-                style={{width: '90%'}}
-              />
-            </Grid>
-            <Grid container spacing={2} style={{paddingTop: 30}}>
-              <Grid item xs={3}>
-                Completed:
-              </Grid>
-              <Grid item xs={9}>
-                <Checkbox
-                  checked={this.state.activeWorkout.completed}
-                  className={classes.checkboxRoot}
-                  onChange={handleCompletedChange(this.state.activeWorkout)} />
-              </Grid>
-            </Grid>
-          </div>
-        </Modal>
+        <T10eWorkoutModal />
       </div>
     )
   }
