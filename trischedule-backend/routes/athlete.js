@@ -1,6 +1,8 @@
 const express = require('express');
 // eslint-disable-next-line
 const router = express.Router();
+const {Firestore} = require('@google-cloud/firestore');
+const firestore = new Firestore();
 
 /* GET users listing. */
 router.get('/:athleteId', function(req, res, next) {
@@ -12,7 +14,7 @@ router.get('/:athleteId', function(req, res, next) {
   });
 });
 
-router.get('/:athleteId/schedule', function(req, res, next) {
+router.get('/:athleteId/schedule/mocked', function(req, res, next) {
   const athleteId = req.params.athleteId;
   res.status(200).send({
     athlete_id: athleteId,
@@ -57,6 +59,19 @@ router.get('/:athleteId/schedule', function(req, res, next) {
       },
     ],
   });
+});
+
+router.get('/:athleteId/schedule', async function(req, res, next) {
+  const query = firestore.collection('workouts').where('athlete_id', '==', req.params.athleteId);
+  // offset is where to start the query return (in case of repeated queries)
+  const workoutDocs = await query.limit(10).offset(0).get();
+  const workouts = [];
+  workoutDocs.forEach((workoutDoc) => {
+    workouts.push(workoutDoc.data());
+  });
+  res.status(200).send({
+    athlete_id: req.params.athleteId,
+    workouts: workouts});
 });
 
 module.exports = router;
