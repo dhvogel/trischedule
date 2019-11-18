@@ -2,16 +2,9 @@ import React from 'react';
 import List from '@material-ui/core/List';
 import T10eWorkout from './t10e-workout';
 import T10eDayHeader from './t10e-day-header';
-import T10eWorkoutModal from './t10e-workout-modal';
-import Modal from '@material-ui/core/Modal';
-import TextField from '@material-ui/core/TextField';
-import Checkbox from '@material-ui/core/Checkbox';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import SaveIcon from '@material-ui/icons/Save';
-
 import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
+import { withRouter } from 'react-router-dom';
 
 const styles = {
   paper: {
@@ -41,45 +34,28 @@ class T10eSchedule extends React.Component<Props> {
 
   componentDidMount() {
     const backendAddress = process.env.REACT_APP_TRISCHEDULE_BACKEND_ADDRESS
+    //TODO: parameterize this
     axios.get(`${backendAddress}/athlete/abc/schedule`)
       .then(res => {
-        console.log(res)
         const workouts = res.data.workouts;
         this.setState({ workouts });
     });
   }
 
+  handleWorkoutChange = (workout) => {
+    this.props.onSelectWorkout(workout);
+    //TODO: parameterize this
+    this.props.history.push('/schedule/abc/workout/1')
+  }
 
   render() {
     if (!this.state.workouts) return null
-    const { classes } = this.props;
     const workouts = this.state.workouts
     const workoutsGroupedByDate = workouts.reduce((workoutsSoFar, {scheduled_day, workout_type, completed, workout_comments, workout_id}) => {
       if (!workoutsSoFar[scheduled_day]) workoutsSoFar[scheduled_day] = []
       workoutsSoFar[scheduled_day].push({workout_type, completed, workout_comments, workout_id, scheduled_day});
       return workoutsSoFar
     }, {});
-
-    const openModalWithWorkout = (workout) => {
-      this.setState({
-        openModal: true,
-        activeWorkout: workout,
-      });
-    }
-
-    const closeModalWithWorkout = () => {
-      this.setState({
-        openModal: false
-      })
-    }
-
-    const handleCompletedChange = activeWorkout => event => {
-      let workoutCopy = JSON.parse(JSON.stringify(this.state.activeWorkout));
-      workoutCopy.completed = event.target.checked
-      this.setState({
-        activeWorkout: workoutCopy
-      });
-    }
 
     return (
       <div>
@@ -92,7 +68,7 @@ class T10eSchedule extends React.Component<Props> {
                   <List>
                     {
                       workouts.map((workout) =>
-                        <div onClick={() => openModalWithWorkout(workout)}><T10eWorkout workout={workout} /></div>
+                        <div onClick={() => this.handleWorkoutChange(workout)}><T10eWorkout workout={workout} /></div>
                       )
                     }
                   </List>
@@ -100,10 +76,9 @@ class T10eSchedule extends React.Component<Props> {
             })
           }
         </List>
-        <T10eWorkoutModal />
       </div>
     )
   }
 }
 
-export default withStyles(styles)(T10eSchedule);
+export default withRouter(withStyles(styles)(T10eSchedule));
