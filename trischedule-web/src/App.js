@@ -21,6 +21,9 @@ class App extends React.Component<Props>  {
     return (
       <div className='App'>
         <Router>
+          <Route path="/">
+            Home page
+          </Route>
           <Route path="/schedule/:athleteId">
             <T10eHeader />
             <T10eSchedule onSelectWorkout={this.handleWorkoutSelection}/>
