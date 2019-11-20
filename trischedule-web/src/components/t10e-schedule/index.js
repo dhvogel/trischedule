@@ -5,6 +5,7 @@ import T10eDayHeader from './t10e-day-header';
 import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
+import Box from '@material-ui/core/Box';
 
 const styles = {
   paper: {
@@ -68,7 +69,9 @@ class T10eSchedule extends React.Component<Props> {
                   <List>
                     {
                       workouts.map((workout) =>
-                        <div onClick={() => this.handleWorkoutChange(workout)}><T10eWorkout workout={workout} /></div>
+                          <div onClick={() => this.handleWorkoutChange(workout)}>
+                            <T10eWorkout workout={workout} />
+                          </div>
                       )
                     }
                   </List>

@@ -6,7 +6,6 @@ import Grid from '@material-ui/core/Grid';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import ListItem from '@material-ui/core/ListItem';
-import equal from 'fast-deep-equal';
 
 const styles = {
   cardContent: {
@@ -22,7 +21,7 @@ class T10eWorkout extends React.Component<Props> {
     const { classes, workout } = this.props
     return (
       <ListItem>
-        <Card style={{width: '100%'}}>
+        <Card style={{width: '70%'}}>
           <CardContent className={classes.cardContent}>
             <Grid container spacing={3}>
               <Grid item xs={11}>
