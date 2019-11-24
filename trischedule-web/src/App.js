@@ -11,10 +11,15 @@ const styles = {};
 class App extends React.Component<Props>  {
   state = {
     activeWorkout: {},
+    activeUser: {},
   };
 
-  handleWorkoutSelection = (workout) => {
-    this.setState({activeWorkout: workout});
+  handleWorkoutSelection = (workoutObject) => {
+    this.setState({activeWorkout: workoutObject});
+  }
+
+  handleUserLogin = (userObject) => {
+    this.setState({activeUser: userObject})
   }
 
   render() {
@@ -25,7 +30,7 @@ class App extends React.Component<Props>  {
             Home page
           </Route>
           <Route path="/schedule/:athleteId">
-            <T10eHeader />
+            <T10eHeader onUserLogin={this.handleUserLogin} activeUser={this.state.activeUser}/>
             <T10eSchedule onSelectWorkout={this.handleWorkoutSelection}/>
           </Route>
           <Route path="/schedule/:athleteId/workout/:workoutId">
