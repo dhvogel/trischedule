@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import T10eHeader from './components/t10e-header';
 import T10eSchedule from './components/t10e-schedule';
+import T10eHome from './components/t10e-home';
 import T10eWorkoutDetails from './components/t10e-workout-details';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -25,12 +26,12 @@ class App extends React.Component<Props>  {
   render() {
     return (
       <div className='App'>
+        <T10eHeader onUserLogin={this.handleUserLogin} activeUser={this.state.activeUser}/>
         <Router>
           <Route path="/">
-            Home page
+            <T10eHome />
           </Route>
           <Route path="/schedule/:athleteId">
-            <T10eHeader onUserLogin={this.handleUserLogin} activeUser={this.state.activeUser}/>
             <T10eSchedule onSelectWorkout={this.handleWorkoutSelection}/>
           </Route>
           <Route path="/schedule/:athleteId/workout/:workoutId">

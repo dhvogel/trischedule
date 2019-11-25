@@ -38,7 +38,7 @@ class T10eHeader extends React.Component<Props> {
                       <Box display="flex" justifyContent="flex-start">
                         <Box item p={1} style={{padding:10}}>
                             <GoogleLogin
-                              clientId="1023134307181-g63dga5nnpgk7ca9lijqb1qos9qdfkel.apps.googleusercontent.com"
+                              clientId="1023134307181-t41n9fain7ugre6n7up55fmg5uv88mia.apps.googleusercontent.com"
                               buttonText="Login"
                               onSuccess={responseGoogle}
                               onFailure={responseGoogle}
