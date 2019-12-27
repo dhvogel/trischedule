@@ -4,9 +4,11 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
 
-const indexRouter = require('./routes/index');
-const workoutRouter = require('./routes/workout');
 const athleteRouter = require('./routes/athlete');
+const indexRouter = require('./routes/index');
+const signupRouter = require('./routes/signup');
+const workoutRouter = require('./routes/workout');
+
 
 const app = express();
 
@@ -18,7 +20,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 app.use('/', indexRouter);
-app.use('/workout', workoutRouter);
 app.use('/athlete', athleteRouter);
+app.use('/signup', signupRouter);
+app.use('/workout', workoutRouter);
+
 
 module.exports = app;

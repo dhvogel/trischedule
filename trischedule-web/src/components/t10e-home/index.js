@@ -1,16 +1,40 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import List from '@material-ui/core/List';
-import Box from '@material-ui/core/Box';
+import GoogleLogin from 'react-google-login';
+import axios from 'axios';
 
-const styles = {};
+const styles = {
+  googleButton: {
+    width: '100%',
+  }
+};
 
 class T10eHome extends React.Component<Props> {
 
   render() {
+    const responseGoogle = (response) => {
+      const backendAddress = process.env.REACT_APP_TRISCHEDULE_BACKEND_ADDRESS
+      axios.post(`${backendAddress}/signup`, {
+          email: response.profileObj.email,
+          family_name: response.profileObj.familyName,
+          given_name: response.profileObj.givenName,
+          oauth_provider: 'GOOGLE',
+          user_id: response.profileObj.googleId,
+        })
+        .then(res => {
+          if (res.status === 200) {
+            console.log(`existing user attempted signup with userId ${response.profileObj.googleId}`);
+            this.props.onUserLogin(res.data);
+          } else if (res.status === 204) {
+            console.log(`signup successful for user with userId ${response.profileObj.googleId}`);
+            this.props.onUserLogin(res.data);
+          } else {
+            console.log(`uncaught error during signup for user with userId ${response.profileObj.googleId}`);
+          }
+        });
+    }
+
     return (
       <div style={{padding: 50}}>
         <p style={{fontSize: '500%'}}>Own your triathlon prep.</p>
@@ -22,9 +46,14 @@ class T10eHome extends React.Component<Props> {
               <p style={{fontSize: '200%', textAlign:'left'}}>* Earn entry to events</p>
           </Grid>
           <Grid item xs={4}>
-            Sign up with Google /
-            Sign up with Fitbit /
-            Sign up with Facebook
+              <GoogleLogin
+                clientId="1023134307181-t41n9fain7ugre6n7up55fmg5uv88mia.apps.googleusercontent.com"
+                style={{width: '500'}}
+                buttonText="Sign up"
+                onSuccess={responseGoogle}
+                onFailure={responseGoogle}
+                cookiePolicy={'single_host_origin'}
+              />
           </Grid>
           <Grid item xs={2} />
         </Grid>

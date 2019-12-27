@@ -26,10 +26,10 @@ class App extends React.Component<Props>  {
   render() {
     return (
       <div className='App'>
-        <T10eHeader onUserLogin={this.handleUserLogin} activeUser={this.state.activeUser}/>
+        <T10eHeader activeUser={this.state.activeUser}/>
         <Router>
-          <Route path="/">
-            <T10eHome />
+          <Route exact path="/">
+            <T10eHome onUserLogin={this.handleUserLogin} />
           </Route>
           <Route path="/schedule/:athleteId">
             <T10eSchedule onSelectWorkout={this.handleWorkoutSelection}/>

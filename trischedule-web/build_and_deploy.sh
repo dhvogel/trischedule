@@ -1,4 +1,4 @@
-VERSION=0.1.7
+VERSION=0.1.9
 
 docker build -t gcr.io/trischedule/trischedule-web:$VERSION .
 docker push gcr.io/trischedule/trischedule-web:$VERSION

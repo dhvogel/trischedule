@@ -1,7 +1,6 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar'
 import Grid from '@material-ui/core/Grid';
-import GoogleLogin from 'react-google-login';
 import Box from '@material-ui/core/Box';
 
 const styles = {
@@ -16,10 +15,6 @@ const styles = {
 class T10eHeader extends React.Component<Props> {
 
   render() {
-    const responseGoogle = (response) => {
-      console.log(response);
-      this.props.onUserLogin(response.profileObj);
-    }
 
     return (
       <AppBar className={styles.appbar} style={{height: 50}}>
@@ -35,27 +30,11 @@ class T10eHeader extends React.Component<Props> {
                     this.props.activeUser.constructor === Object ?
                     (
                     <div>
-                      <Box display="flex" justifyContent="flex-start">
-                        <Box item p={1} style={{padding:10}}>
-                            <GoogleLogin
-                              clientId="1023134307181-t41n9fain7ugre6n7up55fmg5uv88mia.apps.googleusercontent.com"
-                              buttonText="Login"
-                              onSuccess={responseGoogle}
-                              onFailure={responseGoogle}
-                              cookiePolicy={'single_host_origin'}
-                            />
-                        </Box>
-                      <Box style={{padding:10}}>
-                        Strava
-                      </Box>
-                      <Box style={{padding:10}}>
-                        Fitbit
-                      </Box>
-                     </Box>
+                      <p></p>
                     </div>
                     )
                      : (
-                        <p>Hello, {this.props.activeUser.givenName}</p>
+                        <p>Hello, {this.props.activeUser.given_name}</p>
                      )
                 }
             </Grid>
