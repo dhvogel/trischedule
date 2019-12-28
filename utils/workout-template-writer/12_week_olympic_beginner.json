@@ -1,0 +1,164 @@
+[
+  {
+    "comments": "Easy swim, 30-40mins. Use warm-up to work on technique then go for longer reps – 400-600m – at an easy to steady pace. Don’t be overly concerned about speed, just get metres in.",
+    "days_from_start_date": 0,
+    "minutes": "30",
+    "workout_type": "SWIM"
+  },
+  {
+    "comments": "Easy run, 30-40mins. Try to run on soft, even surface. Start out slowly for first 5mins then build to an easy pace. Focus on keeping a nice cadence and not over-striding.",
+    "days_from_start_date": 1,
+    "minutes": "30",
+    "workout_type": "RUN"
+  },
+  {
+    "comments": "Bike, 75-90mins. Easy bike on road or turbo. Focus on smooth pedalling and maintaining a good cadence – between 85 and 95rpm.",
+    "days_from_start_date": 3,
+    "minutes": "75",
+    "workout_type": "BIKE"
+  },
+  {
+    "comments": "Swim, 40-50mins. Continuous swimming working on breathing pattern and rhythm.",
+    "days_from_start_date": 4,
+    "minutes": "40",
+    "workout_type": "SWIM"
+  },
+  {
+    "comments": "40 minute bike before a 20 minute run. Very easy pace.",
+    "days_from_start_date": 5,
+    "minutes": "40",
+    "workout_type": "BIKE"
+  },
+  {
+    "comments": "20 minute run after 40 minute bike. Very easy pace.",
+    "days_from_start_date": 5,
+    "minutes": "20",
+    "workout_type": "RUN"
+  },
+  {
+    "comments": "Steady swim, 60mins. Similar session to the week previous with long reps but try to swim slightly faster per rep than before. Keep an easy to steady pace",
+    "days_from_start_date": 7,
+    "minutes": "60",
+    "workout_type": "SWIM"
+  },
+  {
+    "comments": "Long easy run, 50-60mins. Start off very easy and concentrate on holding form and a high cadence. 10-15mins of stretching post-run",
+    "days_from_start_date": 8,
+    "minutes": "50",
+    "workout_type": "RUN"
+  },
+  {
+    "comments": "Steady bike, 40-60mins. On the turbo. 5mins warm up then 6mins pedalling single leg, alternating every 30secs. 4-6 x (6mins at a steady intensity with 2mins recovery between). 5mins easy warm down",
+    "days_from_start_date": 9,
+    "minutes": "50",
+    "workout_type": "BIKE"
+  },
+  {
+    "comments": "Run build, 40-50mins. Start with 10-15mins of core strength exercises then 40-50mins of running. Build speed as you go from recovery pace up to high-end steady",
+    "days_from_start_date": 11,
+    "minutes": "50",
+    "workout_type": "BIKE"
+  },
+  {
+    "comments": "Bike to run brick, 75mins. Bike at a steady intensity followed by a 30mins run, also steady. Work on keeping cadence up in first 5mins of your run after biking",
+    "days_from_start_date": 12,
+    "minutes": "45",
+    "workout_type": "BIKE"
+  },
+  {
+    "comments": "Bike to run brick, 75mins. Bike at a steady intensity followed by a 30mins run, also steady. Work on keeping cadence up in first 5mins of your run after biking",
+    "days_from_start_date": 12,
+    "minutes": "30",
+    "workout_type": "RUN"
+  },
+  {
+    "comments": "Swim, 45-60mins. With a swim squad if available. Easy to steady session getting the metres in.",
+    "days_from_start_date": 13,
+    "minutes": "45",
+    "workout_type": "SWIM"
+  },
+  {
+    "comments": "Long run, 60-75mins. At a nice easy pace. Take some fluids with you or plan a stop somewhere you can get some. Stay consistent throughout the run and keep your pace steady. Try to run 1.2-1.5 x race distance",
+    "days_from_start_date": 14,
+    "minutes": "60",
+    "workout_type": "RUN"
+  },
+  {
+    "comments": "Easy swim, 45mins. Include a mix of strokes and some kick with fins.",
+    "days_from_start_date": 15,
+    "minutes": "45",
+    "workout_type": "SWIM"
+  },
+  {
+    "comments": "20-30mins working mainly core but also upper back and shoulders to balance swimming muscles",
+    "days_from_start_date": 15,
+    "minutes": "20",
+    "workout_type": "GYM"
+  },
+  {
+    "comments": "Steady bike, 60-90mins. Building aerobic endurance, use undulating terrain",
+    "days_from_start_date": 16,
+    "minutes": "60",
+    "workout_type": "BIKE"
+  },
+  {
+    "comments": "Progressive swim, 45-60mins. Can be done with a swim squad if available. Main set should include mid-length reps (150-300m) building from easy to tempo pace",
+    "days_from_start_date": 17,
+    "minutes": "45",
+    "workout_type": "SWIM"
+  },
+  {
+    "comments": "Long bike, 90mins-2hrs. Easy to steady bike over flat to undulating terrain. Stay in seat over any hills and pedal smoothly, concentrating on keeping cadence high – 90-95.",
+    "days_from_start_date": 19,
+    "minutes": "90",
+    "workout_type": "BIKE"
+  },
+  {
+    "comments": "10-20mins easy run immediately off bike. Remain light on your feet",
+    "days_from_start_date": 19,
+    "minutes": "10",
+    "workout_type": "RUN"
+  },
+  {
+    "comments": "Open-water swim, 45mins. Very easy swim. Practise your sighting and swimming around others. Do laps if available and build up the distance you can swim without stopping",
+    "days_from_start_date": 20,
+    "minutes": "45",
+    "workout_type": "SWIM"
+  },
+  {
+    "comments": "Technique swim, 30-40mins. Get a coach to have a look at your technique and give feedback. Otherwise work on distance per stroke and balance in the water",
+    "days_from_start_date": 22,
+    "minutes": "45",
+    "workout_type": "SWIM"
+  },
+  {
+    "comments": "S+C or yoga, 30-45mins. Continue to work on lower abdominals and lower back",
+    "days_from_start_date": 24,
+    "minutes": "30",
+    "workout_type": "SWIM"
+  },
+  {
+    "comments": "Steady run, 30-40mins. Start at an easy pace for 5mins then build up to a steady pace for 20-30mins, focus on consistency and finding a rhythm. 5mins easy finish",
+    "days_from_start_date": 25,
+    "minutes": "30",
+    "workout_type": "RUN"
+  },
+  {
+    "comments": "Bike to run brick, 60-90mins. Easy to steady bike on undulating to hilly terrain. Stay seated on climbs and keep cadence up. Practice eating and drinking regularly.",
+    "days_from_start_date": 26,
+    "minutes": "60",
+    "workout_type": "RUN"
+  },
+  {
+    "comments": " Easy to steady run off bike 20-30mins.",
+    "days_from_start_date": 26,
+    "minutes": "20",
+    "workout_type": "RUN"
+  },
+  {
+    "comments": "Easy spin on bike, 45-60mins. Flat ride or turbo. Use your gears and vary cadence but spin your legs easy",
+    "days_from_start_date": 27,
+    "minutes": "45",
+    "workout_type": "BIKE"
+  },
+]
