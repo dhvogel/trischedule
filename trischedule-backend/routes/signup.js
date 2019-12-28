@@ -34,7 +34,8 @@ router.post('/', async function(req, res, next) {
         } else {
           // should just be 1 user
           userSnapshot.forEach((user) => {
-            console.log(`sign up attempted for existing user with userId ${userId}`);
+            console.log(`sign up attempted for existing user
+              with userId ${userId}`);
             const existingUser = user.data();
             res.status(200).send({
               email: existingUser.email,

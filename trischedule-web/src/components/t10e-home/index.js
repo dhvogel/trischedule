@@ -1,5 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import { withRouter } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import GoogleLogin from 'react-google-login';
 import axios from 'axios';
@@ -24,11 +25,13 @@ class T10eHome extends React.Component<Props> {
         })
         .then(res => {
           if (res.status === 200) {
-            console.log(`existing user attempted signup with userId ${response.profileObj.googleId}`);
+            console.log(`existing user attempted signup with userId ${res.data.user_id}`);
             this.props.onUserLogin(res.data);
+            this.props.history.push(`/schedule/${res.data.user_id}`)
           } else if (res.status === 204) {
-            console.log(`signup successful for user with userId ${response.profileObj.googleId}`);
+            console.log(`signup successful for user with userId ${res.data.user_id}`);
             this.props.onUserLogin(res.data);
+            this.props.history.push(`/schedule/${res.data.user_id}`);
           } else {
             console.log(`uncaught error during signup for user with userId ${response.profileObj.googleId}`);
           }
@@ -48,7 +51,6 @@ class T10eHome extends React.Component<Props> {
           <Grid item xs={4}>
               <GoogleLogin
                 clientId="1023134307181-t41n9fain7ugre6n7up55fmg5uv88mia.apps.googleusercontent.com"
-                style={{width: '500'}}
                 buttonText="Sign up"
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}
@@ -63,4 +65,4 @@ class T10eHome extends React.Component<Props> {
   }
 }
 
-export default withStyles(styles)(T10eHome);
+export default withRouter(withStyles(styles)(T10eHome));

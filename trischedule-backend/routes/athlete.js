@@ -5,19 +5,19 @@ const {Firestore} = require('@google-cloud/firestore');
 const firestore = new Firestore();
 
 /* GET users listing. */
-router.get('/:athleteId', function(req, res, next) {
-  const athleteId = req.params.athleteId;
+router.get('/:userId', function(req, res, next) {
+  const userId = req.params.userId;
   res.status(200).send({
-    athlete_id: athleteId,
+    user_id: userId,
     first_name: 'DGlester',
     last_name: 'Hardunkichud',
   });
 });
 
-router.get('/:athleteId/schedule/mocked', function(req, res, next) {
-  const athleteId = req.params.athleteId;
+router.get('/:userId/schedule/mocked', function(req, res, next) {
+  const userId = req.params.userId;
   res.status(200).send({
-    athlete_id: athleteId,
+    user_id: userId,
     workouts: [
       {
         workout_id: '1',
@@ -31,7 +31,7 @@ router.get('/:athleteId/schedule/mocked', function(req, res, next) {
         // comments about the workout
         workout_comments: 'a great workout today',
         // athlete to which this workout belongs
-        athlete_id: req.params.athleteId,
+        user_id: req.params.userId,
       },
       {
         workout_id: '2',
@@ -39,7 +39,7 @@ router.get('/:athleteId/schedule/mocked', function(req, res, next) {
         workout_type: 'BIKE',
         completed: true,
         workout_comments: 'a tough bike ride',
-        athlete_id: req.params.athleteId,
+        user_id: req.params.userId,
       },
       {
         workout_id: '3',
@@ -47,7 +47,7 @@ router.get('/:athleteId/schedule/mocked', function(req, res, next) {
         workout_type: 'SWIM',
         completed: false,
         workout_comments: 'a refreshing swim',
-        athlete_id: req.params.athleteId,
+        user_id: req.params.userId,
       },
       {
         workout_id: '4',
@@ -55,14 +55,15 @@ router.get('/:athleteId/schedule/mocked', function(req, res, next) {
         workout_type: 'BIKE',
         completed: false,
         workout_comments: 'a great way to stay in shape',
-        athlete_id: req.params.athleteId,
+        user_id: req.params.userId,
       },
     ],
   });
 });
 
-router.get('/:athleteId/schedule', async function(req, res, next) {
-  const query = firestore.collection('workouts').where('athlete_id', '==', req.params.athleteId);
+router.get('/:userId/schedule', async function(req, res, next) {
+  const query = firestore.collection('workouts')
+      .where('user_id', '==', req.params.userId);
   // offset is where to start the query return (in case of repeated queries)
   const workoutDocs = await query.limit(10).offset(0).get();
   const workouts = [];
@@ -70,7 +71,7 @@ router.get('/:athleteId/schedule', async function(req, res, next) {
     workouts.push(workoutDoc.data());
   });
   res.status(200).send({
-    athlete_id: req.params.athleteId,
+    user_id: req.params.userId,
     workouts: workouts});
 });
 

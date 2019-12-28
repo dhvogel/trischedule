@@ -58,6 +58,16 @@ class T10eSchedule extends React.Component<Props> {
       return workoutsSoFar
     }, {});
 
+    if (Object.entries(workoutsGroupedByDate).length === 0
+      && workoutsGroupedByDate.constructor === Object) {
+        return (
+          <div>
+            <br /><br />
+            <p>No workouts :(</p>
+          </div>
+        )
+      }
+
     return (
       <div>
         <List style={{paddingTop: 60, paddingLeft: 20, paddingRight:50}}>
