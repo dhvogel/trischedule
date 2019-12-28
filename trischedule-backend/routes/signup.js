@@ -22,7 +22,13 @@ router.post('/', async function(req, res, next) {
             given_name: givenName,
             oauth_provider: oauthProvider,
             user_id: userId,
-          });
+          })
+              .then(function(docRef) {
+                console.log('Document written with ID: ', docRef.id);
+              })
+              .catch(function(error) {
+                console.error('Error adding document: ', error);
+              });
           console.log(`user object written for user with userId ${userId}`);
           res.status(204).send({
             email: email,
