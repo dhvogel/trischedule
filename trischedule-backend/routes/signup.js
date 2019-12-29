@@ -3,6 +3,9 @@ const express = require('express');
 const router = express.Router();
 const {Firestore} = require('@google-cloud/firestore');
 const firestore = new Firestore();
+const uuidv4 = require('uuid/v4');
+const moment = require('moment');
+// ⇨ '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'
 
 /* POST signup */
 router.post('/', async function(req, res, next) {
@@ -30,14 +33,15 @@ router.post('/', async function(req, res, next) {
                 console.error('Error adding document: ', error);
               });
           console.log(`user object written for user with userId ${userId}`);
-          res.status(204).send({
+          console.log(`creating workout schedule for user with userId ${userId}`);
+          generateWorkoutSchedule(userId, res.status(204).send({
             email: email,
             family_name: familyName,
             given_name: givenName,
             oauth_provider: oauthProvider,
             user_id: userId,
-          });
-        } else {
+          }));
+        } else if (userSnapshot.size == 1) {
           // should just be 1 user
           userSnapshot.forEach((user) => {
             console.log(`sign up attempted for existing user
@@ -51,8 +55,42 @@ router.post('/', async function(req, res, next) {
               user_id: existingUser.user_id,
             });
           });
+        } else {
+          res.status(409).send({
+            email: email,
+            family_name: familyName,
+            given_name: givenName,
+            oauth_provider: oauthProvider,
+            user_id: userId,
+          });
         }
       });
 });
+
+// could evolve to type of workout, workout start date
+const generateWorkoutSchedule = function(userId, callback) {
+  firestore.collection('12_week_olympic_beginner').get()
+      .then((workoutScheduleTemplateSnapshot) => {
+        workoutScheduleTemplateSnapshot.forEach((workout) => {
+          const workoutData = workout.data();
+          const uuid = uuidv4();
+          const workoutDay = moment().add(workoutData.days_from_start_date, 'days')
+              .format('YYYY-MM-DD');
+          console.log(`workoutData ${JSON.stringify(workoutData)}`);
+          firestore.collection('workouts').add({
+            completed: false,
+            minutes: workoutData.minutes,
+            scheduled_day: workoutDay,
+            user_id: userId,
+            workout_comments: workoutData.comments,
+            workout_id: uuid,
+            workout_type: workoutData.workout_type,
+          });
+        });
+      })
+      .then(() => {
+
+      });
+};
 
 module.exports = router;

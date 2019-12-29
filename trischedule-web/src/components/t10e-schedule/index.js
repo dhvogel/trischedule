@@ -36,7 +36,7 @@ class T10eSchedule extends React.Component<Props> {
   componentDidMount() {
     const backendAddress = process.env.REACT_APP_TRISCHEDULE_BACKEND_ADDRESS
     //TODO: parameterize this
-    axios.get(`${backendAddress}/athlete/abc/schedule`)
+    axios.get(`${backendAddress}/athlete/109456685386876045920/schedule`)
       .then(res => {
         const workouts = res.data.workouts;
         this.setState({ workouts });
