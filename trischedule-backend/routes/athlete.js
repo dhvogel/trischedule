@@ -65,7 +65,7 @@ router.get('/:userId/schedule', async function(req, res, next) {
   const query = firestore.collection('workouts')
       .where('user_id', '==', req.params.userId);
   // offset is where to start the query return (in case of repeated queries)
-  const workoutDocs = await query.limit(10).offset(0).get();
+  const workoutDocs = await query.get();
   const workouts = [];
   workoutDocs.forEach((workoutDoc) => {
     workouts.push(workoutDoc.data());

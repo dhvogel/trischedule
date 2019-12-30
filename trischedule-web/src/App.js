@@ -31,10 +31,10 @@ class App extends React.Component<Props>  {
           <Route exact path="/">
             <T10eHome onUserLogin={this.handleUserLogin} />
           </Route>
-          <Route path="/schedule/:athleteId">
+          <Route path="/schedule/:userId">
             <T10eSchedule onSelectWorkout={this.handleWorkoutSelection} activeUser={this.state.activeUser}/>
           </Route>
-          <Route path="/schedule/:athleteId/workout/:workoutId">
+          <Route path="/schedule/:userId/workout/:workoutId">
             <T10eWorkoutDetails activeWorkout={this.state.activeWorkout}/>
           </Route>
         </Router>

@@ -17,7 +17,7 @@ router.get('/:workoutId', function(req, res, next) {
     // comments about the workout
     workout_comments: 'a great workout today',
     // athlete to which this workout belongs
-    athlete_id: '12345',
+    user_id: '12345',
   });
 });
 

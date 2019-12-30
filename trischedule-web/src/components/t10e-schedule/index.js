@@ -36,7 +36,7 @@ class T10eSchedule extends React.Component<Props> {
   componentDidMount() {
     const backendAddress = process.env.REACT_APP_TRISCHEDULE_BACKEND_ADDRESS
     //TODO: parameterize this
-    axios.get(`${backendAddress}/athlete/${this.props.activeUser.user_id}/schedule`)
+    axios.get(`${backendAddress}/athlete/${this.props.match.params.userId}/schedule`)
       .then(res => {
         const workouts = res.data.workouts;
         this.setState({ workouts });
@@ -46,7 +46,7 @@ class T10eSchedule extends React.Component<Props> {
   handleWorkoutChange = (workout) => {
     this.props.onSelectWorkout(workout);
     //TODO: parameterize this
-    this.props.history.push(`/schedule/${this.props.activeUser.user_id}/workout/${workout.workout_id}`);
+    this.props.history.push(`/schedule/${this.props.match.params.userId}/workout/${workout.workout_id}`);
   }
 
   render() {
