@@ -6,6 +6,7 @@ import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
+import moment from 'moment';
 
 const styles = {
   paper: {
@@ -52,11 +53,16 @@ class T10eSchedule extends React.Component<Props> {
   render() {
     if (!this.state.workouts) return null
     const workouts = this.state.workouts
+    // group workouts by date
     const workoutsGroupedByDate = workouts.reduce((workoutsSoFar, {scheduled_day, workout_type, completed, workout_comments, workout_id}) => {
       if (!workoutsSoFar[scheduled_day]) workoutsSoFar[scheduled_day] = []
       workoutsSoFar[scheduled_day].push({workout_type, completed, workout_comments, workout_id, scheduled_day});
       return workoutsSoFar
     }, {});
+
+    // sort the dates
+    console.log(moment());
+
 
     if (Object.entries(workoutsGroupedByDate).length === 0
       && workoutsGroupedByDate.constructor === Object) {
