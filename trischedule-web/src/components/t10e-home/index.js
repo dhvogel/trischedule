@@ -24,6 +24,7 @@ class T10eHome extends React.Component<Props> {
           user_id: response.profileObj.googleId,
         })
         .then(res => {
+          console.log(`SIGNUP RESPONSE: ${JSON.stringify(res)}`);
           if (res.status === 200) {
             console.log(`existing user attempted signup with userId ${res.data.user_id}`);
             this.props.onUserLogin(res.data);

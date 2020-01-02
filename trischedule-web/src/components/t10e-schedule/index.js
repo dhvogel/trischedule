@@ -63,9 +63,13 @@ class T10eSchedule extends React.Component<Props> {
     // sort the dates
     console.log(moment());
 
+    const ordered = {}
+    Object.keys(workoutsGroupedByDate).sort().forEach((key) => {
+      ordered[key] = workoutsGroupedByDate[key];
+    })
 
-    if (Object.entries(workoutsGroupedByDate).length === 0
-      && workoutsGroupedByDate.constructor === Object) {
+    if (Object.entries(ordered).length === 0
+      && ordered.constructor === Object) {
         return (
           <div>
             <br /><br />
@@ -78,7 +82,7 @@ class T10eSchedule extends React.Component<Props> {
       <div>
         <List style={{paddingTop: 60, paddingLeft: 20, paddingRight:50}}>
           {
-            Object.entries(workoutsGroupedByDate).map(([date, workouts], idx) => {
+            Object.entries(ordered).map(([date, workouts], idx) => {
               return (
                 <div>
                   <T10eDayHeader date={ date } />

@@ -34,13 +34,13 @@ router.post('/', async function(req, res, next) {
               });
           console.log(`user object written for user with userId ${userId}`);
           console.log(`creating workout schedule for user with userId ${userId}`);
-          generateWorkoutSchedule(userId, res.status(204).send({
-            email: email,
-            family_name: familyName,
-            given_name: givenName,
-            oauth_provider: oauthProvider,
-            user_id: userId,
-          }));
+          generateWorkoutSchedule(userId, res, {
+              email: email,
+              family_name: familyName,
+              given_name: givenName,
+              oauth_provider: oauthProvider,
+              user_id: userId,
+          });
         } else if (userSnapshot.size == 1) {
           // should just be 1 user
           userSnapshot.forEach((user) => {
@@ -68,7 +68,7 @@ router.post('/', async function(req, res, next) {
 });
 
 // could evolve to type of workout, workout start date
-const generateWorkoutSchedule = function(userId, callback) {
+const generateWorkoutSchedule = function(userId, res, object) {
   firestore.collection('12_week_olympic_beginner').get()
       .then((workoutScheduleTemplateSnapshot) => {
         workoutScheduleTemplateSnapshot.forEach((workout) => {
@@ -76,7 +76,6 @@ const generateWorkoutSchedule = function(userId, callback) {
           const uuid = uuidv4();
           const workoutDay = moment().add(workoutData.days_from_start_date, 'days')
               .format('YYYY-MM-DD');
-          console.log(`workoutData ${JSON.stringify(workoutData)}`);
           firestore.collection('workouts').add({
             completed: false,
             minutes: workoutData.minutes,
@@ -85,11 +84,14 @@ const generateWorkoutSchedule = function(userId, callback) {
             workout_comments: workoutData.comments,
             workout_id: uuid,
             workout_type: workoutData.workout_type,
+          }).then(() => {
+            console.log('workout added');
           });
         });
       })
-      .then(() => {
-
+      .finally(() => {
+        console.log(`responding with ${JSON.stringify(object)}...`);
+        res.status(204).send(object);
       });
 };
 

@@ -6,6 +6,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
 import Divider from '@material-ui/core/Divider';
+import moment from 'moment';
 
 const styles = {};
 
@@ -21,7 +22,7 @@ class T10eDayHeader extends React.Component<Props> {
               <DirectionsRunIcon />
             </Avatar>
           </ListItemAvatar>
-          <ListItemText secondary={date} />
+          <ListItemText secondary={moment(date).format('LL')} />
         </ListItem>
         <Divider/>
       </div>
